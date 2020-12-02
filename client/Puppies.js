@@ -1,12 +1,10 @@
-import axios from 'axios';
 import React from 'react';
 import {connect} from 'react-redux'
-import {addPuppies} from './store'
+import {getPuppies} from './store'
 
 class Puppies extends React.Component {
-  async componentDidMount() {
-    const {data} = await axios.get('/puppies');
-    this.props.addPuppies(data);
+  componentDidMount() {
+    this.props.getPuppies()
   }
 
   render() {
@@ -43,7 +41,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addPuppies: (puppies) => dispatch(addPuppies(puppies))
+    getPuppies: () => dispatch(getPuppies())
   }
 }
 
